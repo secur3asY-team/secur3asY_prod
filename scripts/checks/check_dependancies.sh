@@ -41,7 +41,7 @@ write_well_without_return () {
 		done
 }
 
-declare -a dependancies=(aircrack-ng build-essential crunch ettercap-common libffi-dev:amd64 libssl-dev:amd64 metasploit-framework net-tools python3.6 python3.6-dev python3-pip)
+declare -a dependancies=(aircrack-ng build-essential crunch ettercap-common gcc libffi-dev:amd64 libssl-dev:amd64 metasploit-framework net-tools python3.6 python3.6-dev python3-pip)
 declare -a needed_packets
 
 write_well_without_return "Checking repositories... "
@@ -70,6 +70,12 @@ then
 								echo
 								exit 1
 						else 	write_well "[${text_green}+${text_default}]  Line added into /etc/apt/sources.list.\\n"
+								wget -q -O - https://archive.kali.org/archive-key.asc | apt-key add > /dev/null 2>&1
+								if [ $? -ne 0 ]
+								then	write_well "[${text_red}x${text_default}]  Unable to fetch and activate kali-rolling public key.\\n"
+										exit 1
+								else	write_well "[${text_green}+${text_default}]  Kali-rolling public key fetched and activated.\\n"
+								fi
 								echo
 								echo "----------------------------------------------------"
 								echo
