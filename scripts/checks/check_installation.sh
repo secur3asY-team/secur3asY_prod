@@ -164,6 +164,8 @@ then
 				exit 1
 		fi
 
+		bash "$SCRIPTS_PATH/checks/check_dependancies.sh"
+
 		write_well_without_return "Compiling source-codes... "
 		gcc -Os -I /usr/include/python3.6m -o $SCRIPTS_PATH/checks/check_rogue_interfaces $ACTUAL_SOURCES_PATH/check_rogue_interfaces.c -lpython3.6m -lpthread -lm -lutil -ldl
 		if [ $? -eq 0 ]
