@@ -41,7 +41,7 @@ write_well_without_return () {
 		done
 }
 
-declare -a dependancies=(aircrack-ng build-essential crunch ettercap-common gcc libffi-dev:amd64 libssl-dev:amd64 metasploit-framework net-tools python3.6 python3.6-dev python3-pip)
+declare -a dependancies=(aircrack-ng crunch ettercap-common gcc libffi-dev:amd64 libssl-dev:amd64 metasploit-framework net-tools python3.6 python3.6-dev python3-pip)
 declare -a needed_packets
 
 write_well_without_return "Checking repositories... "
